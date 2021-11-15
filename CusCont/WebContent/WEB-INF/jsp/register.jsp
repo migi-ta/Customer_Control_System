@@ -11,8 +11,8 @@
 <body>
 <div class="mx-auto" style="width: 300px;">
 	<h1 class="mb-3" style="text-align: center">顧客登録画面</h1>
-	<form action="/CusCont/CustomerServlet" method="post">
-		<input type="hidden" name="id" value="0">
+	<form action="/CusCont/SqlServlet" method="post">
+		<input type="hidden" name="id" value="">
 		<input type="hidden" name="cus_status" value="insert">
 	  <div class="mb-3">
 	    <label for="customerName" class="form-label">お客様名</label>
@@ -28,10 +28,9 @@
 	  </div>
 	  <button type="submit" class="btn btn-primary">登録</button>
 	</form>
-	<c:url value="/CustomerServlet" var="register">
-		<c:param name="command" value="REGISTER"/>
-	</c:url>
-	<a href="${register}">顧客一覧画面</a>
+
+	<c:url value="/CustomerServlet" var="register"/>
+	<a href="${register}" style="text-align:center;">顧客管理画面</a>
 </div>
 </body>
 </html>

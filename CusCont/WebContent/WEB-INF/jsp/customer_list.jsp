@@ -4,7 +4,7 @@
 <%@ page import="con.Customer" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<% List<Customer> customer_list = (List<Customer>)request.getAttribute("customer_data");%>
+<% List<Customer> customer_list = (List<Customer>)request.getAttribute("cus_all");%>
 
 <!DOCTYPE html>
 <html>
@@ -35,13 +35,13 @@
 			 	<td><%= cus.getPhone_num() %></td>
 			 	<td>
  			 		<c:set var="data" value="<%= cus.getId() %>" />
-				 	<c:url value="/CustomerServlet" var="update">
+				 	<c:url value="/SqlServlet" var="update">
 				 		<c:param name="command" value="UPDATE"/>
 				 		<c:param name="id" value="${data}"/>
 				 	</c:url>
 				 	<a href="${update}">更新</a>
 				 	|
-				 	<c:url value="/CustomerServlet" var="delete">
+				 	<c:url value="/SqlServlet" var="delete">
 				 		<c:param name="command" value="DELETE"/>
 				 		<c:param name="id" value="${data}"/>
 				 	</c:url>
@@ -51,7 +51,7 @@
 			 <% } %>
 		</tbody>
 	</table>
-	<c:url value="/CustomerServlet" var="register">
+	<c:url value="/SqlServlet" var="register">
 		<c:param name="command" value="REGISTER"/>
 	</c:url>
 	<a href="${register}">顧客登録画面</a>

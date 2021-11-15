@@ -11,12 +11,12 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/style.css">
-<title>顧客管理画面</title>
+<title>顧客情報変更画面</title>
 </head>
 <body>
 <div class="mx-auto" style="width: 300px;">
 	<h1 class="mb-3" style="text-align: center">顧客情報変更</h1>
-	<form action="/CusCont/CustomerServlet" method="post">
+	<form action="/CusCont/SqlServlet" method="post">
 		<input type="hidden" name="cus_status" value="update">
 		<input type="hidden" name="id" value="<%= cus_info.get(0).getId() %>">
 	  <div class="mb-3">

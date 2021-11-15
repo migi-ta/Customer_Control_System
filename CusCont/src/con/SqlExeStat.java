@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SqlExeStat {
-
+	//ユーザ指定
 	final String url = "jdbc:mysql://localhost:3306/customer_db";
 	final String user = "root";
-	final String password  = "pumaamup7176";
+	final String password  = "";
 
 	//select処理
 	public List<Customer> selectAll() {
@@ -33,7 +33,6 @@ public class SqlExeStat {
 					cus.setPhone_num(rs.getString("phone_num"));
 					list.add(cus);
 				}
-				System.out.println(DriverManager.getDriver(url));
 		} catch (SQLException e) {
 			System.out.println("SQLの例外が発生しました");
 			e.getStackTrace();
@@ -136,5 +135,36 @@ public class SqlExeStat {
 			System.out.println("SQLの例外が発生しました");
 			e.printStackTrace();
 		}
+	}
+
+	//ログインチェック処理
+	public List<User> check(String user_name, String user_pass) {
+		String sql = "select * from user_tb "
+				+ "where user_name = ? and password = ?";
+
+		List<User> user_info = new ArrayList<User>();
+		try(Connection conn = DriverManager.getConnection(url,user,password)){
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, user_name);
+			stmt.setString(2, user_pass);
+			ResultSet rs = stmt.executeQuery();
+			User user = new User();
+
+			if(rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setPassword(rs.getString("password"));
+				user_info.add(user);
+			} else {
+				user.setUser_name("no user");
+				user.setPassword("no password");
+				user_info.add(user);
+				return user_info;
+			}
+		} catch (SQLException e) {
+			System.out.print("エラーが発生しました");
+			e.printStackTrace();
+		}
+		return user_info;
 	}
 }
