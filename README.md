@@ -1,1 +1,1 @@
-# Customer_Control_System
+# 顧客管理システム
