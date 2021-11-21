@@ -3,7 +3,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="con.Customer" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <% List<Customer> customer_list = (List<Customer>)request.getAttribute("cus_all");%>
 
 <!DOCTYPE html>
@@ -14,6 +13,7 @@
 <title>顧客管理画面</title>
 </head>
 <body>
+<%@ include file="layout.jsp" %>
 <div class="mx-auto text-center" style="width: 70%;">
 	<h2 class="text-center mb-3">顧客管理一覧</h2>
 	<table class="table table-striped">
