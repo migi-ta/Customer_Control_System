@@ -9,6 +9,7 @@
 <title>顧客登録画面</title>
 </head>
 <body>
+<%@ include file="layout.jsp" %>
 <div class="mx-auto" style="width: 300px;">
 	<h1 class="mb-3" style="text-align: center">顧客登録画面</h1>
 	<form action="/CusCont/SqlServlet" method="post">

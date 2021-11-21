@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -50,9 +51,12 @@ public class LoginServlet extends HttpServlet {
 		String u_pass = login_user.get(0).getPassword();
 
 		if(u_name.equals(user_name) && u_pass.equals(user_pass)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user_name);
 			List<Customer> cus_all = new ArrayList<Customer>();
 			cus_all = login.selectAll();
 			request.setAttribute("cus_all",cus_all);
+
 			RequestDispatcher dispatcher =
 					request.getRequestDispatcher("WEB-INF/jsp/customer_list.jsp");
 			dispatcher.forward(request, response);

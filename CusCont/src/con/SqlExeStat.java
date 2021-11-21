@@ -14,7 +14,7 @@ public class SqlExeStat {
 	//ユーザ指定
 	final String url = "jdbc:mysql://localhost:3306/customer_db";
 	final String user = "root";
-	final String password  = "1111";
+	final String password  = "11111111";
 
 	//select処理
 	public List<Customer> selectAll() {
