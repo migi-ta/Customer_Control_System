@@ -31,7 +31,9 @@
 	</form>
 
 	<c:url value="/CustomerServlet" var="register"/>
-	<a href="${register}" style="text-align:center;">顧客管理画面</a>
+	<div style="text-align:center;">
+		<a href="${register}">顧客管理画面</a>
+	</div>
 </div>
 </body>
 </html>
